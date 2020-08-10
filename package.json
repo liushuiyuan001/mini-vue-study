@@ -1,0 +1,39 @@
+{
+  "name": "toy-vue",
+  "version": "0.0.1",
+  "description": "## study from https://github.com/cuixiaorui/mini-vue.git",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liushuiyuan001/toy-vue.git"
+  },
+  "keywords": [
+    "vue",
+    "vue3.0"
+  ],
+  "author": "liushuiyuan001",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/liushuiyuan001/toy-vue/issues"
+  },
+  "homepage": "https://github.com/liushuiyuan001/toy-vue#readme",
+  "dependencies": {
+    "@vue/reactivity": "^3.0.0-rc.5"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.4.0",
+    "@rollup/plugin-replace": "^2.3.3",
+    "@types/jest": "^26.0.9",
+    "jest": "^26.3.0",
+    "rollup": "^2.23.1",
+    "rollup-plugin-sourcemaps": "^0.6.2",
+    "rollup-plugin-typescript": "^1.0.1",
+    "ts-jest": "^26.1.4",
+    "tslib": "^2.0.1",
+    "typescript": "^3.9.7"
+  }
+}
