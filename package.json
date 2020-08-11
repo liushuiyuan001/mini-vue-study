@@ -2,9 +2,12 @@
   "name": "toy-vue",
   "version": "0.0.1",
   "description": "## study from https://github.com/cuixiaorui/mini-vue.git",
-  "main": "index.js",
+  "main": "lib/mini-vue.cjs.js",
+  "module": "lib/mini-vue.esm.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c",
+    "build:type": "tsc -p ./tsconfig.type.json",
+    "test": "jest --no-cache"
   },
   "repository": {
     "type": "git",
