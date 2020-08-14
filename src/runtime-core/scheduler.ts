@@ -3,11 +3,11 @@ const queue: any[] = [];
 const p = Promise.resolve()
 let isFlushedPending = false;
 
-export function nextTick(fn) {
+export function nextTick(fn: any) {
   return fn ? p.then(fn) : p
 }
 
-export function queueJob(job) {
+export function queueJob(job: any) {
   if (!queue.includes(job)) {
     queue.push(job)
     // 执行所有的 job
