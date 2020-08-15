@@ -235,3 +235,115 @@ function patchKeyedChildren(c1, c2, container) {
           }
       }
 }
+
+function mountElement(vnode, container) {
+      const { shapeFlag, props } = vnode
+      // 1. 先创建element
+      // 基于可扩展的渲染 api
+      const el = (vnode.el = hostCreateElement(vnode.type))
+
+      // 支持单子组件和多子组件的创建
+      if (shapeFlag & ShapeFlags.TESXT_CHILDREN) {
+          // 举个栗子
+          // render() {
+          //   return h("div", {}, "test")  
+          //  }
+          console.log(`处理文本：${vnode.children}`)
+          hostSetElementText(el, vnode.children)  
+      } else if (shapeFlag & ShapeFlags.ARRAY_CHILDREN) {
+      //     举个栗子
+      //     render() {
+      //          Hello 是个 component 
+      //          return h("div", {}, [h("p"), h(Hello)])
+      //     }
+      //     这里 children 就是个数组了 就需要依次调用 patch 递归来处理
+         mountChildren(vnode.children, el)    
+      }
+
+      // 处理 props
+      if (props) {
+            for (const key in props) {
+                const nextValue = props[key];
+                hostPatchProp(el, ket, null, nextValue)                        
+            }
+      }
+
+      // TOD
+      // 触发 beforeMoun() 狗子
+      console.log("vnodeHook -> onVnodeMounted")
+      console.log("vnodeHook -> mounted")
+      console.log("vnodeHook -> enter")
+}
+
+function mountChildren(children, container) {
+      children.forEach(VNodeChildren => {
+            // TODO
+            // 这里应该需要处理一下 vnodeChild
+            // 因为有可能不是 vnode类型
+            console.log("mountChildren:", VNodeChildren)
+            patch(null, VNodeChildren, container)  
+      })
+}
+
+function processComponent(n1, n2, container) {
+      // 如果 n1 没有值得话，那么就是 mount
+      if (!n1) {
+            // 初始化 component
+            mountComponent(n2, container)           
+      } else {
+            // TODO
+            // updateComponent() 
+      }
+}
+
+function mountComponent(initialVNode, container) {
+      //1. 先创建一个 component instance
+      const instance = (initialVNode.component = createComponentInstance( initialVNode ))
+      console.log(`创建组件实例：${instance.type.name}`)
+      //2. 给 install 加工加工
+
+      setupComponent(instance)
+
+      setupRenderEffect(instance, container)
+}
+
+function setupComponent(instance) {
+      //1. 处理 props
+      initProps()
+      //2. 处理 slots
+      initSlots()
+
+      // 源码里面有两种类型的 component
+      // 一种是基于 options 创建的
+      // 还有一种是 function 的
+      // 这里处理的是 options 创建的
+      // 叫做 stateful 类型
+      setupStatefulComponent(instance)
+}
+
+function initProps() {
+  // TODO
+  console.log("initProps")
+}
+
+function initSlots() {
+  // TODO
+  console.log("initSlots")
+}
+
+function setupStatefulComponent(instance) {
+   // todo
+   // 1. 先创建代理 proxy
+   console.log("创建 proxy")
+   // 2. 调用 setup
+   // todo
+   // 应该传入 props 和 setupContext
+   const setupResult = instance.setup && instance.setup(instance.props)
+   
+   // 3. 处理 setupResult
+   handleSetupResult(instance, setupResult)
+}
+
+function handleSetupResult(instance, setupResult) {
+    // 
+}
