@@ -12,7 +12,7 @@ export const createApp = (rootComponent) => {
             _container: null,
             mount(rootContainer) {
                   console.log("基于根组件创建 vnode")
-                  const vnode = createVNode(rootContainer)
+                  const vnode = createVNode(rootComponent)
                   app._container = rootContainer
                   console.log("调用 render， 基于 vnode 进行开箱")
                   render(vnode, rootContainer)

@@ -28,10 +28,10 @@ function patch(n1, n2, container = null) {
           
           default:
           // 这里就基于 shapeFlag 来处理
-          if (shapeFlag & shapeFlag.ELEMENT) {
+          if (shapeFlag & ShapeFlags.ELEMENT) {
             console.log("处理 element")
             processElement(n1, n2, container)
-          } else if (shapeFlag & shapeFlag.STATEFUL_COMPONENT) {
+          } else if (shapeFlag & ShapeFlags.STATEFUL_COMPONENT) {
             console.log("处理 component")
             processComponent(n1, n2, container)
           }

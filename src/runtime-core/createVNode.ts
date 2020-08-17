@@ -18,14 +18,14 @@ export const createVNode = function (
       type,
       props,
       children,
-      shapeFlags: getShapeFlags(type)
+      shapeFlag: getShapeFlags(type)
   }
 
   // 基于 children 再次设置shapeFlag
   if (Array.isArray(children)){
-        vnode.type  |= ShapeFlags.ARRAY_CHILDREN
+        vnode.shapeFlag  |= ShapeFlags.ARRAY_CHILDREN
   } else if (typeof children === 'string') {
-        vnode.type |= ShapeFlags.TESXT_CHILDREN
+        vnode.shapeFlag |= ShapeFlags.TESXT_CHILDREN
   }
 
   return vnode

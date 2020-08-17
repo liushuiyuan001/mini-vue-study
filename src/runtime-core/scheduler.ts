@@ -30,7 +30,7 @@ function queueFlush() {
 function flushJobs() {
    isFlushedPending = false;
    let job;
-   while (job = queue.shift) {
+   while (job = queue.shift()) {
        job && job()  
    }
 }
