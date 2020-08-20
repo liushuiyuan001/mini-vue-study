@@ -27,6 +27,7 @@ export const hostPatchProp = (el, key, preValue, nextValue) => {
            } else {
                  el.setAttribute(key, nextValue)
            }
+            break;
          case "onclick":
             // todo
             // 先临时实现click 事件
